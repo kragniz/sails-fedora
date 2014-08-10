@@ -5,9 +5,9 @@ Summary:        Simulator for autonomous sailing boats
 
 License:        GPLv3+
 URL:            https://github.com/kragniz/sails
-Source0:        https://github.com/kragniz/sails/archive/sails-0.1.tar.gz
+Source0:        https://github.com/kragniz/sails/archive/v0.1.tar.gz
 
-BuildRequires:  cmake gtk3-devel librsvg2-devel
+BuildRequires:  cmake gtk3-devel librsvg2-devel desktop-file-utils
 Requires:       gtk3 librsvg2
 
 %description
@@ -24,6 +24,7 @@ make %{?_smp_mflags}
 %install
 rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
+desktop-file-validate %{buildroot}/%{_datadir}/applications/sails.desktop
 
 %files
 %{_bindir}/sails
